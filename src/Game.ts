@@ -1,42 +1,34 @@
 import Phaser from "phaser";
 
-class BootScene extends Phaser.Scene {
-  constructor() {
-    super("BootScene");
-  }
+import BootScene from "./scenes/BootScene";
+import OpeningScene from "./scenes/OpeningScene";
+import GameScene from "./scenes/GameScene";
 
-  create() {
-    this.cameras.main.setBackgroundColor("#79C267");
+new Phaser.Game({
 
-    this.add
-      .text(
-        this.scale.width / 2,
-        this.scale.height / 2,
-        "🌸 Blessing Quest",
-        {
-          fontSize: "42px",
-          color: "#ffffff",
-          fontFamily: "Arial",
-        }
-      )
-      .setOrigin(0.5);
-  }
-}
+    type: Phaser.AUTO,
 
-export const game = new Phaser.Game({
-  type: Phaser.AUTO,
+    width: 720,
+    height: 1280,
 
-  width: 720,
-  height: 1280,
+    parent: "app",
 
-  parent: "app",
+    scale: {
 
-  backgroundColor: "#79C267",
+        mode: Phaser.Scale.FIT,
 
-  scene: [BootScene],
+        autoCenter: Phaser.Scale.CENTER_BOTH
 
-  scale: {
-    mode: Phaser.Scale.FIT,
-    autoCenter: Phaser.Scale.CENTER_BOTH,
-  },
+    },
+
+    scene: [
+
+        BootScene,
+
+        OpeningScene,
+
+        GameScene
+
+    ]
+
 });
